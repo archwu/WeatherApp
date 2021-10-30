@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		7F6FC52F1898D774061BF099 /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E1D5A0981BE3A2D6AE1156 /* Pods_WeatherApp.framework */; };
 		C229F133272BA17A005C2C0E /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C229F132272BA17A005C2C0E /* CurrentWeather.swift */; };
+		C229F137272BCFEE005C2C0E /* SearchCityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C229F136272BCFEE005C2C0E /* SearchCityController.swift */; };
+		C229F139272BD276005C2C0E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C229F138272BD276005C2C0E /* Constants.swift */; };
+		C229F13B272C7FFB005C2C0E /* CityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C229F13A272C7FFB005C2C0E /* CityInfo.swift */; };
 		C256C5B2272B8B12008C5237 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C256C5B1272B8B12008C5237 /* AppDelegate.swift */; };
 		C256C5B4272B8B12008C5237 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C256C5B3272B8B12008C5237 /* SceneDelegate.swift */; };
 		C256C5B6272B8B12008C5237 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C256C5B5272B8B12008C5237 /* ViewController.swift */; };
@@ -21,6 +24,9 @@
 		0E7EE5B5F6BC3FA16386EEAE /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
 		52BD513A1896335780EFFB2D /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C229F132272BA17A005C2C0E /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
+		C229F136272BCFEE005C2C0E /* SearchCityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityController.swift; sourceTree = "<group>"; };
+		C229F138272BD276005C2C0E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C229F13A272C7FFB005C2C0E /* CityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfo.swift; sourceTree = "<group>"; };
 		C256C5AE272B8B12008C5237 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C256C5B1272B8B12008C5237 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C256C5B3272B8B12008C5237 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				C229F132272BA17A005C2C0E /* CurrentWeather.swift */,
+				C229F13A272C7FFB005C2C0E /* CityInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -64,6 +71,8 @@
 			isa = PBXGroup;
 			children = (
 				C256C5B5272B8B12008C5237 /* ViewController.swift */,
+				C229F136272BCFEE005C2C0E /* SearchCityController.swift */,
+				C229F138272BD276005C2C0E /* Constants.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -236,6 +245,9 @@
 				C256C5B2272B8B12008C5237 /* AppDelegate.swift in Sources */,
 				C229F133272BA17A005C2C0E /* CurrentWeather.swift in Sources */,
 				C256C5B4272B8B12008C5237 /* SceneDelegate.swift in Sources */,
+				C229F13B272C7FFB005C2C0E /* CityInfo.swift in Sources */,
+				C229F137272BCFEE005C2C0E /* SearchCityController.swift in Sources */,
+				C229F139272BD276005C2C0E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

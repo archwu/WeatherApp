@@ -69,7 +69,7 @@
         <!--Search for cities-->
         <scene sceneID="Hv6-rL-4Fd">
             <objects>
-                <viewController id="RXP-Os-pL7" sceneMemberID="viewController">
+                <viewController id="RXP-Os-pL7" customClass="SearchCityViewController" customModule="WeatherApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BoF-NX-xXl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,7 +78,7 @@
                                 <rect key="frame" x="5" y="153" width="404" height="704"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="boO-pP-0Xs">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="boO-pP-0Xs">
                                         <rect key="frame" x="0.0" y="24.5" width="404" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="boO-pP-0Xs" id="E0S-0V-vwV">
@@ -87,6 +87,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="RXP-Os-pL7" id="tV9-F1-VjR"/>
+                                    <outlet property="delegate" destination="RXP-Os-pL7" id="zb4-Pf-E83"/>
+                                </connections>
                             </tableView>
                             <searchBar contentMode="redraw" placeholder="Type for city name" translatesAutoresizingMaskIntoConstraints="NO" id="Y2B-Ke-kW2">
                                 <rect key="frame" x="5" y="93" width="414" height="50"/>
@@ -96,6 +100,9 @@
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="lXQ-L1-YGY"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="RXP-Os-pL7" id="D6d-AG-dEJ"/>
+                                </connections>
                             </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Lni-hb-dZ6"/>
@@ -113,6 +120,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Search for cities" id="cdi-JA-Zy7"/>
+                    <connections>
+                        <outlet property="tblView" destination="zMb-or-LQv" id="5FS-cU-qTQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dh1-R7-1Ow" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
