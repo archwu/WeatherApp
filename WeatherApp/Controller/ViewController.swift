@@ -21,8 +21,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         loadCities()
-        
-        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrWeathers.count
@@ -30,7 +28,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = arrWeathers[indexPath.row].cityInfoName
+        cell.textLabel?.text = arrCities[indexPath.row].localizedName + String(arrWeathers[indexPath.row].temp) + "°F, " + arrWeathers[indexPath.row].weatherText
         return cell
     }
     
@@ -38,7 +36,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         do {
             let realm = try Realm()
             let cities = realm.objects(CityInfo.self)
-            arr.removeAll()
+            arrCities = Array(cities)
             getAllWeathers(Array(cities)).done { cities in
                 self.arrWeathers.append(contentsOf: cities)
                 self.tblView.reloadData()

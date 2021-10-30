@@ -39,6 +39,15 @@ class SearchCityViewController: UIViewController, UISearchBarDelegate, UITableVi
         return cell
     }
     
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
+        let city = arrCities[indexPath.row]
+        if doesCityExistInDB(city.key) {
+            return
+        }
+        addCityInDB(city)
+    }
+    
     func loadCities(searchText: String) {
         do {
             arrCities.removeAll()

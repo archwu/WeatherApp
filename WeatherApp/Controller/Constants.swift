@@ -7,7 +7,7 @@
 
 import Foundation
 struct constantss {
-    static var apiKey = "QTgqR3XhHMAFKNNNCQiX9a89H3gOzS3C"
+    static var apiKey = "RJ7rvaCfFwJoB5mJDJFI2J2lPgTnqJmt"
     static var locationSearchURL = "https://dataservice.accuweather.com/locations/v1/cities/autocomplete?"
     static var weatherURL = "https://dataservice.accuweather.com/currentconditions/v1/"
 }
