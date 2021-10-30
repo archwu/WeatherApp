@@ -28,7 +28,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = arrCities[indexPath.row].localizedName + String(arrWeathers[indexPath.row].temp) + "°F, " + arrWeathers[indexPath.row].weatherText
+        cell.textLabel?.text = arrCities[indexPath.row].localizedName + " " + String(arrWeathers[indexPath.row].temp) + "°F, " + arrWeathers[indexPath.row].weatherText
         return cell
     }
     
