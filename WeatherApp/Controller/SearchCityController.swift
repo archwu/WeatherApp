@@ -35,11 +35,10 @@ class SearchCityViewController: UIViewController, UISearchBarDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = arrCities[indexPath.row].localizedName
+        cell.textLabel?.text = arrCities[indexPath.row].localizedName + ", " + arrCities[indexPath.row].administrativeID
         return cell
     }
     
-    //func fillTable()
     func loadCities(searchText: String) {
         do {
             arrCities.removeAll()
@@ -47,13 +46,15 @@ class SearchCityViewController: UIViewController, UISearchBarDelegate, UITableVi
                 if cityJSON.count == 0 {
                     return
                 }
-                let cityInfo = CityInfo()
-                cityInfo.key = cityJSON["Key"].stringValue
-                cityInfo.localizedName = cityJSON["LocalizedName"].stringValue
-                cityInfo.countryLocalizedName = cityJSON["Country"]["LocalizedName"].stringValue
-                cityInfo.type = cityJSON["Type"].stringValue
-                cityInfo.administrativeID = cityJSON["AdministrativeArea"]["ID"].stringValue
-                self.arrCities.append(cityInfo)
+                for json in cityJSON{
+                    let cityInfo = CityInfo()
+                    cityInfo.key = json["Key"].stringValue
+                    cityInfo.localizedName = json["LocalizedName"].stringValue
+                    cityInfo.countryLocalizedName = json["Country"]["LocalizedName"].stringValue
+                    cityInfo.type = json["Type"].stringValue
+                    cityInfo.administrativeID = json["AdministrativeArea"]["ID"].stringValue
+                    self.arrCities.append(cityInfo)
+                }
                 self.tblView.reloadData()
             } .catch {
                 error in print(error)
@@ -64,8 +65,8 @@ class SearchCityViewController: UIViewController, UISearchBarDelegate, UITableVi
     }
 
     
-    func getCitiesFromSearch(searchText: String) -> Promise <JSON> {
-        return Promise<JSON> { seal -> Void in
+    func getCitiesFromSearch(searchText: String) -> Promise <[JSON]> {
+        return Promise<[JSON]> { seal -> Void in
             let url = constantss.locationSearchURL + "apikey=" + constantss.apiKey + "&q=" + searchText
             let urlString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             AF.request(urlString).responseJSON{ response in
@@ -75,10 +76,7 @@ class SearchCityViewController: UIViewController, UISearchBarDelegate, UITableVi
                 }
                 let cities = JSON(response.data!).array
                 
-                guard let firstCity = cities?.first else {seal.fulfill(JSON())
-                    return
-                }
-                seal.fulfill(firstCity)
+                seal.fulfill(cities!)
             }
         }
     }
@@ -106,24 +104,4 @@ class SearchCityViewController: UIViewController, UISearchBarDelegate, UITableVi
         }
     }
     
-    func storeValuesInDB (_ key: String) {
-        getCitiesFromSearch(searchText: key)
-        .done { cityJSON in
-            if cityJSON.count == 0 {
-                return
-            }
-            let cityInfo = CityInfo()
-            cityInfo.key = cityJSON["Key"].stringValue
-            cityInfo.localizedName = cityJSON["LocalizedName"].stringValue
-            cityInfo.countryLocalizedName = cityJSON["Country"]["LocalizedName"].stringValue
-            cityInfo.type = cityJSON["Type"].stringValue
-            cityInfo.administrativeID = cityJSON["AdministrativeArea"]["ID"].stringValue
-            
-            self.addCityInDB(cityInfo)
-            
-        }
-            .catch { (error) in
-                print(error)
-            }
-    }
 }
